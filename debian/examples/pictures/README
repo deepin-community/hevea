@@ -1,0 +1,8 @@
+This example demonstrates how to generate pictures in the PNG format, which
+is the standard format for the Debian version of HeVeA (in contrast to the
+original HeVeA distribution which uses gif as its default image format).
+
+It also demonstrates how to obtain pictures in the GIF format.
+
+To run this example you need the package texlive-latex-extra to be
+installed (see the file /usr/share/doc/hevea/README.debian).

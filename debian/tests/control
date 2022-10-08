@@ -1,0 +1,2 @@
+Tests: examples, source-date-epoch
+Depends: @, texlive-latex-base

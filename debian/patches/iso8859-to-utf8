@@ -1,0 +1,51 @@
+Index: hevea/html/mathpartir.hva
+===================================================================
+--- hevea.orig/html/mathpartir.hva	2021-10-14 21:42:10.887359703 +0200
++++ hevea/html/mathpartir.hva	2021-10-14 21:42:10.883359671 +0200
+@@ -1,6 +1,6 @@
+ %  Mathpartir --- Math Paragraph for Typesetting Inference Rules
+ %
+-%  Copyright (C) 2001--2005 Didier Rémy
++%  Copyright (C) 2001--2005 Didier RÃ©my
+ %  Hevea version by Luc Maranget
+ %
+ %  Author         : Didier Remy 
+Index: hevea/html/hevea.hva
+===================================================================
+--- hevea.orig/html/hevea.hva	2021-10-14 21:42:10.887359703 +0200
++++ hevea/html/hevea.hva	2021-10-14 21:42:10.883359671 +0200
+@@ -1,4 +1,4 @@
+-%%%% Une précaution.
++%%%% Une prÃ©caution.
+ \ifhtml\else\hva@warn{html/hevea is for html mode !!!}\endinput\fi
+ %%%% package used by all packages
+ \input{plain.hva}
+Index: hevea/text/hevea.hva
+===================================================================
+--- hevea.orig/text/hevea.hva	2021-10-02 06:29:36.302069237 +0200
++++ hevea/text/hevea.hva	2021-10-02 06:29:36.000000000 +0200
+@@ -1,4 +1,4 @@
+-%%% Une précaution.
++%%% Une prÃ©caution.
+ \ifhtml\hva@warn{text/hevea is for text and info mode !!!}\endinput\fi
+ %%%% package used by all packages
+ \input{plain.hva}
+Index: hevea/listings.hva
+===================================================================
+--- hevea.orig/listings.hva	2021-10-02 06:06:22.386214995 +0200
++++ hevea/listings.hva	2021-10-02 06:06:22.000000000 +0200
+@@ -90,12 +90,12 @@
+ %\hva@warn{INSTALL: #2 -> #1}%
+ \def\csname lstk@\lst@normalize{#2}\endcsname{#1}}
+ \def\lst@install@kwds#1#2{%
+-%     \hva@warn{RESET: «#1»}%
++%     \hva@warn{RESET: Â«#1Â»}%
+     \lst@delete@kwd@class{#1}%
+     \lst@record@kwd@class{#1}{#2}%
+     \lst@iter{\lst@install@kwd{\csname lst@keywordstyle#1\endcsname}}{#2}}
+ \def\lst@more@kwds#1#2{%
+-%    \hva@warn{MORE: «#1»}%
++%    \hva@warn{MORE: Â«#1Â»}%
+     \lst@record@kwd@class{#1}{#2}%
+     \lst@iter{\lst@install@kwd{\csname lst@keywordstyle#1\endcsname}}{#2}}
+ \def\lst@install@directive#1#2{\def\csname lstd@\lst@normalize{#2}\endcsname{#1}}

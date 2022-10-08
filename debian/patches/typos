@@ -1,0 +1,130 @@
+Author: Ralf Teinen <treinen@debian.org>
+Description: fix typos found by lintian
+
+Index: hevea/color.ml
+===================================================================
+--- hevea.orig/color.ml	2021-10-14 20:37:17.768643062 +0200
++++ hevea/color.ml	2021-10-14 20:37:17.768643062 +0200
+@@ -115,7 +115,7 @@
+       begin
+         try Hashtbl.find table ("named@"^value) with
+         | Not_found -> begin
+-            Misc.warning ("Unkown name in the named color model: "^value) ;
++            Misc.warning ("Unknown name in the named color model: "^value) ;
+             raise Failed
+         end
+       end
+Index: hevea/package.ml
+===================================================================
+--- hevea.orig/package.ml	2021-10-14 20:37:17.768643062 +0200
++++ hevea/package.ml	2021-10-14 20:37:17.768643062 +0200
+@@ -116,7 +116,7 @@
+           Dest.put_unicode comb ;
+         with OutUnicode.CannotTranslate ->
+           Misc.warning
+-            (Printf.sprintf "Ingoring double accent '%s' on '%s'" name fst)
++            (Printf.sprintf "Ignoring double accent '%s' on '%s'" name fst)
+         end ;
+         let rem = String.sub arg 1 (len-1) in
+         Dest.put rem
+@@ -353,7 +353,7 @@
+      let name = match Parse_opts.base_out with
+      | "" ->
+          let r = "out.css" in
+-         warning ("Outputing style sheet to default file: "^r) ;
++         warning ("Outputting style sheet to default file: "^r) ;
+          r
+      | base -> base ^ ".css" in
+      begin try
+@@ -365,7 +365,7 @@
+        close_out chan
+      with
+      | Sys_error msg ->
+-         warning ("Trouble while outputing style sheet: "^msg)
++         warning ("Trouble while outputting style sheet: "^msg)
+      end ;
+      scan_this main (Printf.sprintf "\\@getprintnostyle{%s}" name))
+ ;;
+Index: hevea/verb.mll
+===================================================================
+--- hevea.orig/verb.mll	2021-10-14 20:37:17.768643062 +0200
++++ hevea/verb.mll	2021-10-14 20:37:17.768643062 +0200
+@@ -1411,7 +1411,7 @@
+   let visi =  check_visi (get_prim_arg lexbuf) in
+   let visi =
+     if is_com && not visi then begin
+-      Misc.warning "invisible commments not available" ;
++      Misc.warning "invisible comments not available" ;
+       true 
+     end else visi in
+   let sty = subst_arg lexbuf in
+Index: hevea/index.ml
+===================================================================
+--- hevea.orig/index.ml	2021-10-14 20:37:17.768643062 +0200
++++ hevea/index.ml	2021-10-14 20:37:17.768643062 +0200
+@@ -80,7 +80,7 @@
+ 
+   let r = do_rec () in
+   if !verbose > 0 then
+-    prerr_endline ("Index file: "^name^" succesfully read");
++    prerr_endline ("Index file: "^name^" successfully read");
+   Some r
+ 
+ let find_index tag = Hashtbl.find itable tag
+Index: hevea/CHANGES
+===================================================================
+--- hevea.orig/CHANGES	2021-10-14 20:37:17.768643062 +0200
++++ hevea/CHANGES	2021-10-14 21:11:20.695701639 +0200
+@@ -161,7 +161,7 @@
+        does not work revert.
+      - added option -dAutoRotate=/None in gs invokation by imagen.
+        (suggestion of Sebastien Flicker)
+-     - amsmaths.hva: corrected bug in split environemnt.
++     - amsmaths.hva: corrected bug in split environment.
+      - \refstepcounter in \bititem -> set \theref, allow
+        a hack [\ref{...}] \sim \cite{...} (Some do that).
+ version 1.10+9
+@@ -667,7 +667,7 @@
+   - Better list-making environment and better documentation for them.
+   - Suppressed ``Videoc'' when in text mode.
+   - Added \csname ... \endcsname,
+-    environement names such as ``list1'' are supported
++    environment names such as ``list1'' are supported
+   - Symbols defined as .hva source files.
+   - All internal macros can now be redefined.
+   - Simplified internal macro values (-> 2 constructor only,
+Index: hevea/latexscan.mll
+===================================================================
+--- hevea.orig/latexscan.mll	2021-10-14 20:37:17.768643062 +0200
++++ hevea/latexscan.mll	2021-10-14 21:10:51.923549983 +0200
+@@ -151,7 +151,7 @@
+ 
+ let print_env_pos () =
+   if MyStack.empty stack_env then begin
+-    prerr_endline "No Latex environement is pending"
++    prerr_endline "No Latex environment is pending"
+   end else begin
+     let _,_,pos = MyStack.pop stack_env in
+     Location.print_this_pos pos ;
+@@ -3936,7 +3936,7 @@
+               let name = get_this_nostyle main (save_filename lexbuf) in
+               file := open_out name
+           | _ ->
+-              warning ("Unkown file operation: "^op)
++              warning ("Unknown file operation: "^op)
+         with Sys_error s ->
+           warning ("TeX file error : "^s)))
+ ;;
+Index: hevea/latexcommon.hva
+===================================================================
+--- hevea.orig/latexcommon.hva	2021-10-02 06:29:36.302069237 +0200
++++ hevea/latexcommon.hva	2021-10-14 21:12:33.700089103 +0200
+@@ -202,7 +202,7 @@
+ \newcommand{\@itemenumerate}[1][!*!]
+ {\let\@currentlabel\csname the\@enumcitem\endcsname%
+ \stepcounter{\@itemcount}\@enumerate@linum{\envclass@attr{li-enumerate}}\ifthenelse{\equal{#1}{!*!}}{}{\hva@warn{Ignored optional argument to \item in enumerate environment}}}
+-%environement itemize
++%environment itemize
+ \setenvclass{itemize}{itemize}
+ \newenvironment{itemize}
+   {\@open{ul}{\envclass@attr{itemize}}\let\item\@itemitemize}

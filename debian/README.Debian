@@ -1,0 +1,8 @@
+On a Debian system using the texlive distribution you need to install
+the package texlive-latex-extra if you want to use the "toimage"
+environment. The reason is that hevea generates for each toimage
+environment a temporary TeX file that uses the "comment" environment
+(provided by the texlive-latex-extra package) and then runs latex on
+it to produce the image.
+
+ -- Ralf Treinen <treinen@debian.org>  Sun, 01 Sep 2013 20:01:28 +0200

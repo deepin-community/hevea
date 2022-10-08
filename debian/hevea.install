@@ -1,0 +1,3 @@
+examples/*		usr/share/doc/hevea/examples/upstream
+debian/examples/*	usr/share/doc/hevea/examples/debian
+

@@ -1,0 +1,34 @@
+Source: hevea
+Section: tex
+Priority: optional
+Maintainer: Debian OCaml Maintainers <debian-ocaml-maint@lists.debian.org>
+Uploaders:
+ Ralf Treinen <treinen@debian.org>,
+ Samuel Mimram <smimram@debian.org>,
+ Stéphane Glondu <glondu@debian.org>
+Build-Depends: debhelper-compat (=13),
+ tex-common,
+ dh-ocaml,
+ ocaml-nox (>= 4),
+ ocamlbuild
+Standards-Version: 4.6.0
+Rules-Requires-Root: no
+Vcs-Browser: https://salsa.debian.org/ocaml-team/hevea
+Vcs-Git: https://salsa.debian.org/ocaml-team/hevea.git
+Homepage: http://hevea.inria.fr/
+
+Package: hevea
+Architecture: any
+Multi-Arch: foreign
+Depends: ghostscript, netpbm(>=2:9.10-1), texlive-base ,
+ ${ocaml:Depends}, ${misc:Depends}, ${shlibs:Depends}
+Suggests: hevea-doc, texlive-latex-extra
+Description: translates from LaTeX to HTML, info, or text
+ Its remarkable features are
+  - It produces good output. Special symbols (like mathematical symbols) are
+    translated into HTML entities which should be rendered by any graphical
+    browser. Picture files are only generated on demand, for instance when
+    translating graphics.
+  - It is highly configurable through (La)TeX macros. Though aimed at
+    LaTeX input it understands a fair subset of TeX's macro language.
+  - It runs fast.

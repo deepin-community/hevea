@@ -1,0 +1,27 @@
+#!/usr/bin/make -f
+
+DEB_DESTDIR = debian/hevea
+
+include /usr/share/ocaml/ocamlvars.mk
+ifeq ($(OCAML_HAVE_OCAMLOPT),yes)
+	TARGET:=opt
+else
+	TARGET:=byte
+endif
+
+%:
+	dh $@ --with=ocaml,tex
+
+override_dh_auto_configure:
+	-rm config.sh
+	$(MAKE) config.sh\
+		PREFIX=/usr\
+		LIBDIR=/usr/share/hevea\
+		LATEXLIBDIR=/usr/share/texmf/tex/latex/misc
+
+override_dh_auto_build:
+	$(MAKE) $(TARGET)
+
+override_dh_auto_install:
+	$(MAKE) install TARGET=$(TARGET) DESTDIR=$(DEB_DESTDIR)
+	-rm $(DEB_DESTDIR)/usr/share/hevea/imagen

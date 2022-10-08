@@ -1,0 +1,26 @@
+#!/bin/sh
+
+set -e
+
+rundir=${AUTOPKGTEST_TMP:-/tmp}
+
+cd ${rundir}
+
+cat > in.tex << EOF
+\documentclass{article}
+\usepackage{hevea}
+\begin{document}
+\heveadate
+\end{document}
+EOF
+
+SOURCE_DATE_EPOCH=0 hevea -exec xxdate.exe -text in.tex 2> /dev/null
+gotdate=`sed  -n -e "1 s/^ *//p" < in.txt`
+if [ "$gotdate" != "Thu Jan 1 00:00:00 UTC 1970" ]; then
+   echo got date $gotdate with SOURCE_DATE_EPOCH set  to 0
+   exit 1
+else
+   echo ok
+fi			
+
+
